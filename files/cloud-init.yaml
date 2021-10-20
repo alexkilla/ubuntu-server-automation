@@ -1,0 +1,19 @@
+#cloud-config
+
+package_update: true
+package_upgrade: true
+package_reboot_if_required: true
+
+users:
+    - name: alexkilla
+      lock_passwd: true
+      shell: /bin/bash
+      groups: users
+      ssh-import-id: alexkilla
+      ssh_authorized_keys:
+      - ${init_ssh_public_key}
+      sudo: ALL=(ALL) NOPASSWD:ALL
+
+runcmd:
+  - apt-get update -y
+  - apt-get upgrade -y
