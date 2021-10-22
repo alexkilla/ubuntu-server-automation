@@ -28,7 +28,7 @@ resource "digitalocean_droplet" "web" {
 
 resource digitalocean_ssh_key default {
   name       = "Droplet access."
-  public_key = file("~/.ssh/id_ed25519.pub")
+  public_key = file("~/.ssh/do_ssh_key.pub")
 }
 
 data template_file cloud-init-yaml {
